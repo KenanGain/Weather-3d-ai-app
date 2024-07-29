@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "./Providers/ThemeProviders";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +18,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head>
+      <link 
+          href="https://cesium.com/downloads/cesiumjs/releases/1.101/Build/Cesium/Widgets/widgets.css" 
+          rel="stylesheet" 
+        />
+      </head>
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+
+        {children}
+        <Script 
+          src="https://cesium.com/downloads/cesiumjs/releases/1.101/Build/Cesium/Cesium.js" 
+          strategy="beforeInteractive"
+        />
+        </ThemeProvider>
+        </body>
     </html>
   );
 }
