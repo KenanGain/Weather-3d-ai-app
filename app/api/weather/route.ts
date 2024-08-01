@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { NextRequest, NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 
 export async function GET(req: NextRequest) {
   try {
@@ -18,8 +18,10 @@ export async function GET(req: NextRequest) {
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 
     const res = await axios.get(url);
+    // biome-ignore lint/style/useTemplate: <explanation>
     console.log("real api call"+res);
     return NextResponse.json(res.data);
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   } catch (error: any) {
     if (axios.isAxiosError(error)) {
       console.error('Axios error:', error.response?.data || error.message);

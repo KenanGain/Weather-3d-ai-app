@@ -15,7 +15,7 @@ function Navbar() {
 
    console.log(state);
   return (
-    <div className='w-full py-4 flex items-center justify-between '>
+    <div className='w-full py-4 px-10 flex items-center justify-between '>
       
       <div className="search-container flex shrink-0 w-full gap-2 sm:w-fit drop-shadow-2xl">
         <SearchDialog />

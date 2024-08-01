@@ -1,5 +1,8 @@
 "use client";
-import { thermo, droplets, gauge, people, calender, thermometer, clearSky, wind, sun, eye, sunset } from "@/app/utils/Icons";
+import {
+  thermo, droplets, gauge, people, calender,
+  thermometer, clearSky, wind, sun, eye, sunset
+} from "@/app/utils/Icons";
 import React, { useState } from "react";
 import Temperature from "./Temperature/Temperature";
 import { useGlobalContext } from "../Context/globalContext";
@@ -200,6 +203,7 @@ const Sidebar = () => {
             </div>
           )}
         </div>
+
         
       </div>
     </div>

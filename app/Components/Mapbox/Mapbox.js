@@ -109,21 +109,21 @@ function Mapbox() {
       script.src = 'https://cesium.com/downloads/cesiumjs/releases/1.95/Build/Cesium/Cesium.js';
       script.async = true;
       document.body.appendChild(script);
-
+  
       script.onload = () => {
         setIsScriptLoaded(true);
       };
-
+  
       return () => {
         document.body.removeChild(script);
       };
     }
-  }, []);
+  }, [isScriptLoaded]); // Include isScriptLoaded here
 
   useEffect(() => {
     if (isScriptLoaded && cesiumContainerRef.current && !viewerRef.current) {
       Cesium.RequestScheduler.requestsByServer["tile.googleapis.com:443"] = 18;
-
+  
       viewerRef.current = new Cesium.Viewer(cesiumContainerRef.current, {
         imageryProvider: false,
         baseLayerPicker: false,
@@ -142,21 +142,21 @@ function Mapbox() {
         animation: false,
         requestRenderMode: true,
       });
-
+  
       viewerRef.current.scene.primitives.add(
         new Cesium.Cesium3DTileset({
           url: `https://tile.googleapis.com/v1/3dtiles/root.json?key=${apikey}`,
           showCreditsOnScreen: true,
         })
       );
-
+  
       return () => {
         if (viewerRef.current && !viewerRef.current.isDestroyed()) {
           viewerRef.current.destroy();
         }
       };
     }
-  }, [isScriptLoaded]);
+  }, [isScriptLoaded, apikey]); // Add apikey here
 
   useEffect(() => {
     if (viewerRef.current && activeCityCords) {
@@ -182,7 +182,7 @@ function Mapbox() {
         id="cesiumContainer"
         ref={cesiumContainerRef}
         className="w-screen h-screen"
-      ></div>
+      />
     </div>
   );
 }
