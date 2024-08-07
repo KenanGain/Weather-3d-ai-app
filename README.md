@@ -66,6 +66,8 @@ This project provides a foundation for building a visually stunning and informat
 
 I hope this comprehensive guide empowers you to build a captivating weather app with Next.js!
 
+ ![Alt](https://repobeats.axiom.co/api/embed/c7998d40cdec0472061dfa3fe5cc871803b20c8c.svg "Repobeats analytics image")
+
 Screenshot:
 
 ![Screenshot 2024-06-28 124751](https://github.com/KenanGain/weather-app-3d/assets/123521687/65e5dc9f-f7ab-470d-8b2e-c2d473ee8d96)
